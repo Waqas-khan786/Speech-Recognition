@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Speech Recognization</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Speech Recognization</span></div>
+            <form action="#">
+                <div class="row">
+                    <i class="fa fa-microphone"></i>
+                    <input type="text" name="" autocomplete="off" id="speechToText" placeholder="Speak Something" onclick="record()">
+                    <div class="pass"><a href="#" style="margin-top: 20px; display: none;" id="loading">Listening...</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function record() {
+        var recognition = new webkitSpeechRecognition();
+        var userVoice = "";
+        recognition.lang = "en-GB";
+
+        recognition.onresult = function (event) {
+            // console.log(event);
+            //alert(event.results[0][0].transcript);
+            document.getElementById('speechToText').value = event.results[0][0].transcript;
+            userVoice = event.results[0][0].transcript;
+            //alert(userVoice + " " + " zohaib ki awaaz ");
+            calltakeCommand(userVoice);
+        }
+        recognition.start();
+        $('#loading').show();
+    }
+
+    function calltakeCommand(userVoice) {
+        //var data = $('#loading').text();
+        //$('#loading').show();
+        $.ajax({
+            url: '/takeCommand',
+            type: 'POST',
+            data: { userVoice: userVoice },
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            success: function (data) {
+                alert("ajax working");
+            },
+            complete: function () {
+                $('#loading').hide();
+            }
+        });
+    }
+
+</script>
