@@ -91,66 +91,7 @@ def takeCommand():
         print("Say that again please...")
         speak('Say that again please...')
         #return "None"
-    return jsonify("Working")
-
-def sendEmail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login('youremail@gmail.com', 'your-password')
-    server.sendmail('youremail@gmail.com', to, content)
-    server.close()
-
-
-    wishMe()
-    # while True:
-    # # if 1:
-    #     query = takeCommand().lower()
-
-    #     # Logic for executing tasks based on query
-    #     if 'yahoo' in query or 'open yahoo' in query:
-    #         speak('Searching yahoo...')
-    #         query = query.replace("yahoo", "")
-    #         # results = wikipedia.summary(query, sentences=2)
-    #         webbrowser.open("yahoo.com")
-    #         # speak("According to Wikipedia")
-    #         # print(results)
-    #         # speak(results)
-
-    #     elif 'open youtube' in query or 'youtube' in query:
-    #         webbrowser.open("youtube.com")
-
-    #     elif 'open google' in query or 'google' in query:
-    #         webbrowser.open("google.com")
-
-    #     elif 'open stackoverflow' in query:
-    #         webbrowser.open("stackoverflow.com")   
-
-
-        # elif 'play music' in query:
-        #     music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
-        #     songs = os.listdir(music_dir)
-        #     print(songs)    
-        #     os.startfile(os.path.join(music_dir, songs[0]))
-
-        # elif 'the time' in query:
-        #     strTime = datetime.datetime.now().strftime("%H:%M:%S")    
-        #     speak(f"Sir, the time is {strTime}")
-
-        # elif 'open code' in query:
-        #     codePath = "C:\\Users\\Asus\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-        #     os.startfile(codePath)
-
-        # elif 'email to harry' in query:
-        #     try:
-        #         speak("What should I say?")
-        #         content = takeCommand()
-        #         to = "harryyourEmail@gmail.com"    
-        #         sendEmail(to, content)
-        #         speak("Email has been sent!")
-        #     except Exception as e:
-        #         print(e)
-        #         speak("Sorry my friend harry bhai. I am not able to send this email")
+    return jsonify("Working")  
 if __name__ == "__main__":
     app.run()
    

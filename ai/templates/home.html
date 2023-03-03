@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="wrapper">
-            <div class="title"><span>Speech Recognization</span></div>
+            <div class="title"><span>Speech Recognition</span></div>
             <form action="#">
                 <div class="row">
                     <i class="fa fa-microphone"></i>
@@ -41,7 +41,6 @@
             //alert(event.results[0][0].transcript);
             document.getElementById('speechToText').value = event.results[0][0].transcript;
             userVoice = event.results[0][0].transcript;
-            //alert(userVoice + " " + " zohaib ki awaaz ");
             calltakeCommand(userVoice);
         }
         recognition.start();
